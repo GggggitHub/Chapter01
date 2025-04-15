@@ -26,6 +26,8 @@ android {
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
+//            version "3.18.1" // ✅ 修改为标准版本号
+            version "3.10.2.4988404" // ✅ 修改为标准版本号
         }
     }
 

@@ -1,3 +1,30 @@
+```config
+2018macpro
+
+sdk.dir=/Users/macpro/Android/sdk
+#cmake.dir=/Users/macpro/Android/sdk/cmake/3.18.1
+cmake.dir=/Users/macpro/Android/sdk/cmake/3.10.2.4988404
+ndk.dir=/Users/macpro/Android/sdk/ndk/21.0.6113669
+
+# 对应的 AS 版本
+#Android Studio Chipmunk | 2021.2.1 Patch 1
+#Build #AI-212.5712.43.2112.8609683, built on May 19, 2022
+```
+或者使用 as 自带的工具，匹配自己的 pc
+/Applications/Android Studio 3.app/Contents/plugins/android-ndk/resources/lldb/bin/minidump_stackwalk
+
+`$NDK_HOME/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-addr2line`
+```shell
+AjiedeMacBook-Pro:bin macpro$ pwd
+/Users/macpro/Android/sdk/ndk/21.0.6113669/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64/bin
+AjiedeMacBook-Pro:bin macpro$ ./aarch64-linux-android-addr2line -f -C -e /Users/macpro/Downloads/optimistic/zsw/Chapter01/sample/build/intermediates/transforms/mergeJniLibs/debug/0/lib/arm64-v8a/libcrash-lib.so 0x650
+//输出结果如下
+Crash()
+/Users/macpro/Downloads/optimistic/zsw/Chapter01/sample/.externalNativeBuild/cmake/debug/arm64-v8a/../../../../src/main/cpp/crash.cpp:10
+
+```
+
+
 Chapter01-GEEKTIME
 ======
 例子里集成了[Breakpad](https://github.com/google/breakpad) 来获取发生 native crash 时候的系统信息和线程堆栈信息。
